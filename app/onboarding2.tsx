@@ -25,7 +25,10 @@ export default function Onboarding() {
       <Text style={styles.heading}>
         Chat with the smartest AI. Experience power of AI with us
       </Text>
-      <TouchableOpacity style={styles.button} onPress={() => router.push("/")}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => router.push("/onboarding3")}
+      >
         <AntDesign name="arrow-right" size={24} color="#fff" />
       </TouchableOpacity>
     </View>

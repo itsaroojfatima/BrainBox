@@ -27,7 +27,7 @@ export default function Onboarding() {
       </Text>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => router.push("/onboardering2")}
+        onPress={() => router.push("/onboarding2")}
       >
         <AntDesign name="arrow-right" size={24} color="#fff" />
       </TouchableOpacity>
