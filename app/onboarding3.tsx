@@ -26,7 +26,10 @@ export default function () {
       <Text style={styles.heading}>
         Chat with the smartest AI. Experience power of AI with us
       </Text>
-      <TouchableOpacity style={styles.button} onPress={() => router.push("/")}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => router.push("/welcome")}
+      >
         <AntDesign name="arrow-right" size={24} color="#fff" />
       </TouchableOpacity>
     </View>
