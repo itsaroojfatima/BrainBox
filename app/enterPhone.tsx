@@ -1,6 +1,6 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useRouter } from "expo-router";
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -11,21 +11,40 @@ import {
 
 export default function PhoneNumber() {
   const router = useRouter();
+  const [phone, setPhone] = useState("");
+
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.back}>
-        <Ionicons name="arrow-back" size={20} />
+      <TouchableOpacity style={styles.backBtn} onPress={() => router.back()}>
+        <Ionicons name="chevron-back" size={24} color="#000" />
       </TouchableOpacity>
 
-      <Text style={styles.title}>Enter Your Phone Number</Text>
-      <View style={styles.inputBox}>
-        <Text style={styles.code}>+92</Text>
-        <TextInput placeholder="Phone Number" style={styles.input} />
+      <View style={styles.headingContainer}>
+        <Text style={styles.headingMain}>Enter Your Phone</Text>
+        <Text style={styles.headingMain}>Number</Text>
       </View>
-      <TouchableOpacity style={styles.btn}>
-        <Text style={styles.btnText}> Verification</Text>
 
-        <Text style={styles.subBtn}>Later</Text>
+      <View style={styles.inputContainer}>
+        <Ionicons name="call" size={18} color="#999" style={styles.iconStyle} />
+        <TextInput
+          style={styles.input}
+          placeholder="Phone Number"
+          placeholderTextColor="#ccc"
+          value={phone}
+          onChangeText={setPhone}
+          keyboardType="phone-pad"
+        />
+      </View>
+
+      <TouchableOpacity
+        style={styles.verificationBtn}
+        onPress={() => router.push("/verifyPhone")}
+      >
+        <Text style={styles.verificationBtnText}>Verification</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.laterBtn}>
+        <Text style={styles.laterBtnText}>Later</Text>
       </TouchableOpacity>
     </View>
   );
@@ -34,56 +53,77 @@ export default function PhoneNumber() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#fff",
+    paddingHorizontal: 20,
+    paddingTop: 50,
+  },
+
+  backBtn: {
+    marginBottom: 40,
+    width: 40,
+    height: 40,
     justifyContent: "center",
+    alignItems: "center",
   },
 
-  back: {
-    top: 50,
-    left: 20,
-    backgroundColor: "#eee",
-    borderRadius: 20,
+  headingContainer: {
+    marginBottom: 50,
   },
 
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-    marginBottom: 20,
+  headingMain: {
+    fontSize: 28,
+    fontWeight: "700",
+    color: "#1a1a1a",
+    lineHeight: 32,
   },
 
-  inputBox: {
+  inputContainer: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#eee",
-    borderRadius: 10,
+    backgroundColor: "#f5f5f5",
+    borderRadius: 12,
+    paddingHorizontal: 15,
+    marginBottom: 30,
+    height: 50,
   },
 
-  code: {
+  iconStyle: {
     marginRight: 10,
-    fontWeight: "bold",
   },
 
   input: {
     flex: 1,
+    color: "#000",
+    fontSize: 14,
+    paddingVertical: 12,
   },
 
-  btn: {
-    backgroundColor: "#000",
-    borderRadius: 10,
-    marginTop: 20,
+  verificationBtn: {
+    width: "100%",
+    backgroundColor: "#1a1a1a",
+    paddingVertical: 16,
+    borderRadius: 25,
     alignItems: "center",
+    marginBottom: 12,
   },
 
-  btnText: {
+  verificationBtnText: {
     color: "#fff",
+    fontSize: 16,
+    fontWeight: "600",
   },
-  subBtn: {
-    backgroundColor: "gray",
-    borderRadius: 10,
-    marginTop: 20,
+
+  laterBtn: {
+    width: "100%",
+    backgroundColor: "#e8e8e8",
+    paddingVertical: 16,
+    borderRadius: 25,
     alignItems: "center",
   },
 
-  subBtnText: {
-    color: "gray",
+  laterBtnText: {
+    color: "#999",
+    fontSize: 16,
+    fontWeight: "600",
   },
 });
