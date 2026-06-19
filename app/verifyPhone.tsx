@@ -57,7 +57,7 @@ export default function VerifyPhone() {
 
         <TouchableOpacity
           style={styles.verifyBtn}
-          onPress={() => router.push("/")}
+          onPress={() => router.push("/welcome")}
         >
           <Text style={styles.verifyBtnText}>Verify</Text>
         </TouchableOpacity>
